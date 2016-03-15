@@ -1,0 +1,66 @@
+<template name='newCategory'>
+	<form id="new-category">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Store Management
+            <small>New Category</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">New Category</li>
+          </ol>
+          <ol class="new">
+            <a id="cancel" class="btn btn-lg btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-success">Save Category</button>
+          </ol>
+        </section>
+
+        <div class="row">
+        
+            {{#if errors}}
+              <div class="col-md-12">
+                 <div class="callout callout-danger">
+                 <h4><i class="icon fa fa-ban"></i> Errors</h4>
+                  <h6>{{errors}}</h6>
+                </div>
+              </div>
+            {{/if}}
+
+            <div class="col-md-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">Category</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body pad">
+                  <div class="form-group">
+                    <input type="text" class="form-control catN" placeholder="Category name" name="catN">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control order" placeholder="Order" name="order">
+                  </div>
+                  <div class="form-group">
+                    <label>Image File</label>
+                    <input type="file" class="catImage" name="catImage">
+                    <label class="image-progress">
+                      {{#unless this.isUploaded}}
+                        {{> FS.UploadProgressBar}}
+                      {{/unless}}
+                    </label>
+                  </div>
+                  <div class="form-group"><label>Description</label></div>
+                    <textarea id="description" rows="10" cols="80" name="catDesc">
+                        
+                    </textarea>
+                </div>
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+       CKEDITOR.replace('description');
+      });
+    </script>	
+</form>
+</template>

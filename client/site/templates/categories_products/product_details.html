@@ -1,0 +1,29 @@
+<template name="siteProductDetails">
+	<div class="container product">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="product-details-image"><img src="{{image.url}}"></div>
+			</div>
+			<div class="col-sm-6">
+				<h1>{{name}}</h1>
+				{{#if price}}<h4 class="text-primary">Price : {{price}} LE</h4>{{/if}}
+				<p>{{{description}}}</p>
+				<p>
+					<button class="btn btn-md btn-danger" id="add-cart">Add to cart</button>
+				</p>
+				<p>
+					<span class="text-danger" id="already-in-cart"></span>
+					<span class="text-success" id="added-to-cart"></span>
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12">
+				{{#if specifics}}<h3>Specification</h3>{{/if}}
+				{{#each specifics}}
+					<p><span><strong>{{name}}</strong> : {{value}}</span></p>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+</template>

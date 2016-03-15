@@ -1,0 +1,105 @@
+<template name="adminLayout">
+{{#if isInRole 'admin'}}
+<div class="wrapper">
+{{> sAlert}}
+	 <header class="main-header">
+        <!-- Logo -->
+        <a href="#" class="logo">
+          <span class="logo-mini"><b>C</b>P</span>
+          <span class="logo-lg"><b>Admin</b></span>
+        </a>
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Toggle navigation</span>
+          </a>
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <li class="dropdown user user-menu">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <span class="hidden-xs">Mahmoud Adel</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- User image -->
+                  <li class="user-header">
+                    <img src="/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  </li>
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="text-center">
+                      <a href="#" class="btn btn-default btn-flat" id="signOut">Sign out</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+        <section class="sidebar">
+          <ul class="sidebar-menu">
+            <li class="header">MAIN NAVIGATION</li>
+            <li class="active treeview">
+              <a href="{{pathFor route='dashboard'}}">
+                <i class="fa fa-dashboard"></i>
+								<span>Dashboard</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="{{pathFor route='pages'}}">
+                <i class="fa fa-files-o"></i>
+                <span>Pages Management</span>
+              </a>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-pie-chart"></i>
+                <span>Store Management</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{pathFor route='categories'}}"><i class="fa fa-circle-o"></i> Categories</a></li>
+                <li><a href="{{pathFor route='products'}}"><i class="fa fa-circle-o"></i> Products</a></li>
+              </ul>
+            </li>
+            <li class="treeview">
+              <a href="#">
+                <i class="fa fa-user"></i>
+                <span>Customers</span>
+                <i class="fa fa-angle-left pull-right"></i>
+              </a>
+              <ul class="treeview-menu">
+                <li><a href="{{pathFor route='allCustomers'}}"><i class="fa fa-circle-o"></i> All Customers</a></li>
+                <li><a href="{{pathFor route='orders'}}"><i class="fa fa-circle-o"></i> Orders</a></li>
+              </ul>
+            </li>
+            <li class="header">System</li>
+            <li><a href="{{pathFor route='settings'}}"><i class="fa fa-cogs text-red"></i> <span>Settings</span></a></li>
+            <li><a href="{{pathFor route='tools'}}"><i class="fa fa-wrench text-yellow"></i> <span>Tools</span></a></li>
+            <li><a href="{{pathFor route='users'}}"><i class="fa fa-users text-aqua"></i> <span>Users</span></a></li>
+          </ul>
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+        <div class="content-wrapper">
+
+          <!-- Main content -->
+          <section class="content">
+      			{{> yield}}
+      		</section>
+
+		    </div><!-- /.content-wrapper -->
+
+	<footer class="main-footer">
+        <div class="pull-right hidden-xs">
+          <b>Version</b> 1.0.0
+        </div>
+        <strong>All rights reserved.</strong>
+    </footer>
+</div>
+
+{{/if}}
+</template>

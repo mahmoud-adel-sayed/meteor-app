@@ -1,0 +1,79 @@
+<template name="userOrder">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Customers
+            <small>User order</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">User order</li>
+          </ol>
+        </section>
+
+        <input type="hidden" value="{{subscribe}}">
+
+        <!-- Main content -->
+        <section class="invoice">
+          <!-- title row -->
+          <div class="row">
+            <div class="col-xs-12">
+              <h2 class="page-header">
+                <i class="fa fa-globe"></i> {{name}}
+                <small class="pull-right">Date: {{date}} </small>
+              </h2>
+            </div><!-- /.col -->
+          </div>
+          <!-- info row -->
+          <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+              <address>
+                <strong>Name: </strong>: {{name}}<br>
+                <strong>Address: </strong> {{address}}<br>
+                <strong>Phone: </strong> {{phone}}<br>
+                <strong>Email: </strong>
+                {{#with userEmail}}
+                  {{#each emails}}
+                    {{address}}
+                  {{/each}}
+                {{/with}}
+              </address>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+          <!-- Table row -->
+          <div class="row">
+            <div class="col-xs-12 table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{#each items}}
+                    <tr class="cart_item">
+                      <td>{{product_name}}</td>
+                      <td class="product_price"><span>{{product_price}}</span></td>
+                      <td class="product_quantity"><span>{{product_quantity}}</span></td>
+                      <td>{{subtotal}}</td>
+                    </tr>
+                  {{/each}}
+                </tbody>
+              </table>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+          <div class="row">
+            <div class="col-xs-6">
+                <h2 class="text-danger">Total: <span id="total"></span></h2>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+
+        </section><!-- /.content -->
+        <div class="clearfix"></div>
+
+</template>

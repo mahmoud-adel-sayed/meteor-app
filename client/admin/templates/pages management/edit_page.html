@@ -1,0 +1,62 @@
+<template name="editPage">
+<form id="edit-page">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Pages Management
+            <small>Edit Page</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Edit Page</li>
+          </ol>
+          <ol class="new">
+            <a id="cancel" class="btn btn-lg btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-success">Save Page</button>
+          </ol>
+        </section>
+
+        <div class="row">
+
+            {{#if errors}}
+              <div class="col-md-12">
+                <div class="callout callout-danger">
+                     <h4><i class="icon fa fa-ban"></i> Errors</h4>
+                      <h6>{{errors}}</h6>
+                </div>
+              </div>
+            {{/if}}
+
+            <div class="col-md-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">Page</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body pad">
+                  <div class="form-group">
+                    <label>Page Name</label>
+                    <input type="text" class="form-control pageN" placeholder="page name" name="pageN" value="{{page}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Page Route</label>
+                    <input type="text" class="form-control routeN" placeholder="route" name="routeN" value="{{route}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Page Order</label>
+                    <input type="number" class="form-control order" placeholder="Order" name="order" value="{{order}}">
+                  </div>
+                    <textarea id="description" rows="10" cols="80" name="pageDesc">
+                        {{{description}}}
+                    </textarea>
+                </div>
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+       CKEDITOR.replace('description');
+      });
+    </script>	
+</form>
+</template>

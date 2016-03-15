@@ -1,0 +1,85 @@
+<template name='newProduct'>
+	<form id="new-product">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Store Management
+            <small>New Product</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">New Product</li>
+          </ol>
+          <ol class="new">
+            <a id="cancel" class="btn btn-lg btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-success">Save Product</button>
+          </ol>
+        </section>
+
+        <div class="row">
+
+            {{#if errors}}
+              <div class="col-md-12">
+                 <div class="callout callout-danger">
+                 <h4><i class="icon fa fa-ban"></i> Errors</h4>
+                  <h6>{{errors}}</h6>
+                </div>
+              </div>
+            {{/if}}
+
+            <div class="col-md-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">Product</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body pad">
+                  <div class="form-group">
+                    <input type="text" class="form-control proN" placeholder="Product name" name="proN">
+                  </div>
+                  <div class="form-group">
+                    <input type="number" class="form-control order" placeholder="Order" name="order">
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control price" placeholder="price" name="price">
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-control">
+                      {{#each allCategories}}
+                      <option value="{{_id}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>Image File</label>
+                    <input type="file" class="proImage" name="proImage">
+                    <label class="image-progress">
+                      {{#unless this.isUploaded}}
+                      {{> FS.UploadProgressBar}}
+                      {{/unless}}
+                    </label>
+                  </div>
+                  <div class="form-group"><label>Description</label></div>
+                    <textarea id="description" rows="10" cols="80" name="proDesc">
+                        
+                    </textarea>
+
+                    <div class="form-group">
+                      <h1>Specifications</h1>
+                      <a id="add-spec" class="btn btn-md btn-success">+</a>
+                      <div class="row specifications"></div>
+                    </div>
+
+                </div>
+
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+       CKEDITOR.replace('description');
+      });
+    </script>	
+</form>
+</template>

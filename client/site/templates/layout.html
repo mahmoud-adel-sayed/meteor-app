@@ -1,0 +1,71 @@
+<template name="site">
+<header>
+	<nav>
+		<ul class="site-menu">
+			<li class="{{#if isCurrentPage 'index'}}active{{/if}}">
+				<a href="/">Home</a>
+			</li>
+			<li class="{{#if isCurrentPage 'siteCategories'}}active{{/if}}">
+				<a href="{{pathFor route='siteCategories'}}">Categories</a>
+			</li>
+			<li class="{{#if isCurrentPage 'contactUs'}}active{{/if}}">
+				<a href="{{pathFor route='contactUs'}}">Contact Us</a>
+			</li>
+      		{{#each allPages}}
+      			<li>
+      				<a href="/article/{{route}}">{{page}}</a>
+      			</li>
+      		{{/each}}
+      		<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+		      		<li class="{{#if isCurrentPage 'cart'}}active{{/if}}">
+		      			<a href="{{pathFor route='cart'}}">My cart</a>
+		      		</li>
+		      		{{#if currentUser}}
+			      		<li>
+			      			<a href="#" id="log_out">Log out</a>
+			      		</li>
+		      		{{/if}}
+	      		</ul>
+      		</li>
+      		{{#if currentUser}}
+      			<li class="email">
+	      			{{#each userEmail}}
+	      				{{#each emails}}
+	      					{{address}}
+	      				{{/each}}
+	      			{{/each}}
+      			</li>
+      		{{else}}
+	      		<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+			      		<li class="{{#if isCurrentPage 'signUp'}}active{{/if}}">
+			      			<a href="{{pathFor route='signUp'}}">Sign Up</a>
+			      		</li>
+			      		<li class="{{#if isCurrentPage 'signIn'}}active{{/if}}">
+			      			<a href="{{pathFor route='signIn'}}">Sign In</a>
+			      		</li>
+		      		</ul>
+	      		</li>
+      		{{/if}}
+
+
+
+		</ul>
+	</nav>
+	<div >
+
+	</div>
+</header>
+<div class="site-content">
+	{{> yield}}
+</div>
+<div class="clear"></div>
+<footer class="footer">
+	<p>all rights reserved</p>
+</footer>
+</template>

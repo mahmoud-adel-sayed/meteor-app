@@ -1,0 +1,120 @@
+<template name="editHome">
+	<section class="content-header">
+        <h1>
+           Pages Management
+        <small>Edit Home</small>
+        </h1>
+        <ol class="breadcrumb">
+           <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+           <li class="active">Edit Home</li>
+        </ol>
+        <ol class="new">
+           <a id="cancel" class="btn btn-lg btn-danger">Cancel</a>
+        </ol>
+    </section>	
+
+    <div class="row">
+      <div class="col-md-12">
+          <div class="box box-info">
+
+          <div class="box-header">
+            <h3 class="box-title">Sections</h3>
+          </div><!-- /.box-header -->
+
+          <div class="box-body pad">
+            <div class="table-responsive">          
+               <table class="table">
+                 <thead>
+                   <tr>
+                      <th>Name</th>
+                      <th>Edit</th>
+                    </tr>
+                 </thead>
+                  <tbody>
+                  {{#each sections}}
+                       <tr>
+                         <td>{{name}}</td>
+                         <td><a class="btn btn-md btn-danger edit-home-section" data-toggle="modal" data-target="#{{_id}}">Edit</a></td>
+                       </tr>
+                  {{/each}}
+                  </tbody>
+                </table>
+            </div>
+
+              <!-- Modals -->
+              {{#each sections}}
+              <form class="edit-section">
+                <div class="modal fade" id="{{_id}}" role="dialog">
+                  <div class="modal-dialog">
+                  
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">{{title}}</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h6 class="error">{{errors}}</h6>
+                        <div class="form-group">
+                          <input type="text" class="form-control sectionN" placeholder="section name" name="sectionN" value="{{title}}">
+                        </div>
+                        <textarea class="description" id="{{name}}" rows="10" cols="80" name="sectionDesc">
+                          {{{description}}}
+                        </textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <a type="button" class="btn btn-danger" data-dismiss="modal">Close</a>
+                        <button type="submit" class="btn btn-success">Save</button>
+                      </div>
+                    </div>
+                    
+                  </div>
+                </div>
+                 <script>
+                  $(function () {
+                   CKEDITOR.replace('{{name}}');
+                  });
+                </script> 
+              </form>
+              {{/each}}
+            </div>
+            
+            <div class="box-header">
+              <h3 class="box-title">Our Parteners</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body pad">
+              <div class="form-group">
+                <label>Upload Images</label>
+                <input type="file" class="parteners-slider" multiple>
+              </div>
+              <div class="form-group">
+                {{#each images}}
+                  {{#unless this.isUploaded}}
+                    {{> FS.UploadProgressBar}}
+                  {{/unless}}
+                {{/each}}
+              </div>
+              <div class="table-responsive">          
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Image</th>
+                        <th>Control</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {{#each allSlides}}
+                      <tr>
+                        <td><img src="{{this.url}}" style="max-width:400px;"></td>
+                        <td><a class="btn btn-lg btn-danger remove-slide">Delete</a></td>
+                      </tr>
+                    {{/each}}
+                    </tbody>
+                  </table>
+              </div>
+
+            </div>
+          </div><!-- /.box -->
+      </div><!-- /.col-->
+    </div><!-- ./row -->
+</template>

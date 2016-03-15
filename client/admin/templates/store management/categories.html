@@ -1,0 +1,71 @@
+<template name="categories">
+<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Store Management
+            <small>Categories</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Categories</li>
+          </ol>
+          <ol class="new">
+            <a href="#" class="btn btn-lg btn-danger" id="delete-all">Delete All</a>
+            <a href="{{pathFor route='newCategory'}}" class="btn btn-lg btn-primary">Add New Category</a>
+          </ol>
+        </section>
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">All Categories</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="categories-table" class="table table-bordered table-hover">
+
+                    <thead>
+                      <tr>
+                        <th>Category Name</th>
+                        <th>Image</th>
+                        <th>Order</th>
+                        <th>Edit or Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                      {{#each allCats}}
+                        <tr>
+                          <td>{{name}}</td>
+                          <td><img src="{{getImage.url}}" width="100" height="70"></td>
+                          <td>{{order}}</td>
+                          <td>
+                            <a href="/admin/edit-category/{{_id}}" class="btn btn-default"><i class="fa fa-edit"></i> Edit</a>
+                            <a class="btn btn-danger deleteCat"><i class="fa fa-trash-o"></i> Delete</a>
+                          </td>
+                        </tr>
+                      {{/each}}
+                    </tbody>
+
+                    <tfoot>
+                      <tr>
+                        <th>Category Name</th>
+                        <th>Image</th>
+                        <th>Order</th>
+                        <th>Edit or Delete</th>
+                      </tr>
+                    </tfoot>
+
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+         $("#categories-table").DataTable();
+      });
+    </script> 
+
+</template>

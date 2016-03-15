@@ -1,0 +1,77 @@
+<template name="pages">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Pages Management
+            <small>Pages</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Pages</li>
+          </ol>
+          <ol class="new">
+            <a href="{{pathFor route='newPage'}}" class="btn btn-lg btn-primary">Add New Page</a>
+          </ol>
+        </section>
+
+        <div class="row">
+            <div class="col-md-12">
+              <div class="box">
+                <div class="box-header">
+                  <h3 class="box-title">All Pages</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  <table id="pages-table" class="table table-bordered table-hover">
+
+                    <thead>
+                      <tr>
+                        <th>Page Name</th>
+                        <th>Route</th>
+                        <th>Order</th>
+                        <th>Edit or Delete</th>
+                      </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                      <td>Home</td>
+                      <td>home</td>
+                      <td>1</td>
+                      <td>
+                      <a href="/admin/edit-home" class="btn btn-default"><i class="fa fa-edit"></i> Edit</a></td>
+                    </tr>
+                    {{#each allPages}}
+                      <tr>
+                        <td>{{page}}</td>
+                        <td>{{route}}</td>
+                        <td>{{order}}</td>
+                        <td>
+                          <a href="/admin/edit-page/{{_id}}" class="btn btn-default"><i class="fa fa-edit"></i> Edit</a>
+                          <a class="btn btn-danger deletePage"><i class="fa fa-trash-o"></i> Delete</a>
+                        </td>
+                      </tr>
+                    {{/each}}
+                     
+                    </tbody>
+
+                    <tfoot>
+                      <tr>
+                        <th>Page Name</th>
+                        <th>Route</th>
+                        <th>Order</th>
+                        <th>Edit or Delete</th>
+                      </tr>
+                    </tfoot>
+
+                  </table>
+                </div><!-- /.box-body -->
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+         $("#pages-table").DataTable();
+      });
+    </script>	
+</template>

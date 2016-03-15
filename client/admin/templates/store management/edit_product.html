@@ -1,0 +1,97 @@
+<template name='editProduct'>
+	<form id="edit-product">
+	<!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            Store Management
+            <small>Edit Product</small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="{{pathFor route='dashboard'}}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Edit Product</li>
+          </ol>
+          <ol class="new">
+            <a id="cancel" class="btn btn-lg btn-danger">Cancel</a>
+            <button type="submit" class="btn btn-lg btn-success">Edit Product</button>
+          </ol>
+        </section>
+
+        <div class="row">
+
+            {{#if errors}}
+              <div class="col-md-12">
+                 <div class="callout callout-danger">
+                 <h4><i class="icon fa fa-ban"></i> Errors</h4>
+                  <h6>{{errors}}</h6>
+                </div>
+              </div>
+            {{/if}}
+
+            <div class="col-md-12">
+              <div class="box box-info">
+                <div class="box-header">
+                  <h3 class="box-title">Product</h3>
+                </div><!-- /.box-header -->
+                <div class="box-body pad">
+                  <div class="form-group">
+                  	<label>Product Name</label>
+                    <input type="text" class="form-control proN" placeholder="Product name" name="proN" value="{{name}}">
+                  </div>
+                  <div class="form-group">
+                    <label>Product Order</label>
+                    <input type="number" class="form-control order" placeholder="Product Order" name="order" value="{{order}}">
+                  </div>
+                  <div class="form-group">
+                  	<label>Product Price</label>
+                    <input type="text" class="form-control proR" placeholder="Price" name="price" value="{{price}}">
+                  </div>
+                  <div class="form-group">
+                    <label for="category">Category</label>
+                    <select name="category" id="category" class="form-control">
+                      {{#each allCategories}}
+                      	<option value="{{_id}}">{{name}}</option>
+                      {{/each}}
+                    </select>
+                    {{selected}}
+                  </div>
+                  <div class="form-group">
+                    <label>Image File</label>
+                    <input type="file" class="proImage" name="proImage">
+                    <label class="image-progress">
+                     
+                    </label>
+                  </div>
+                  <div class="form-group"><label>Description</label></div>
+                    <textarea id="description" rows="10" cols="80" name="proDesc">
+                        {{{description}}}
+                    </textarea>
+
+                    <div class="form-group">
+                      <h1>Specifications</h1>
+                      <a id="add-spec" class="btn btn-md btn-success">+</a>
+                      <div class="row specifications">
+                        {{#each specifics}}
+                          <div class="col-md-12 record">
+                            <div class="col-md-6">
+                              <input class="form-control spec-name" placeholder="Name" value="{{name}}">
+                            </div>
+                            <div class="col-md-6">
+                              <input class="form-control spec-value" placeholder="Value" value="{{value}}">
+                            </div>
+                          </div>
+                        {{/each}}
+                      </div>
+                    </div>
+
+                </div>
+              </div><!-- /.box -->
+            </div><!-- /.col-->
+          </div><!-- ./row -->
+
+    <script>
+      $(function () {
+       CKEDITOR.replace('description');
+      });
+    </script>	
+</form>
+</template>

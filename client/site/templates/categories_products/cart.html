@@ -1,0 +1,111 @@
+<template name='cart'>
+	{{#if items.count}}
+	<div class="container cart-table">
+		<div class="row">
+			<div class="col-sm-12">
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Image</th>
+							<th>Name</th>
+							<th>Price</th>
+							<th>Quantity</th>
+							<th>Delete</th>
+							<th>subtotal</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{#each items}}
+							<tr class="cart_item">
+								<td class="wish-img">
+									{{#with product}}
+										<img src="{{image.url}}" >
+									{{/with}}
+								</td>
+								<td class="product_name">
+									<span>{{product.name}}</span>
+								</td>
+								<td class="product_price">
+									<span>{{product.price}}</span> EGP
+								</td>
+								<td class="product_quantity">
+									<input type="number" max="10" min="1" class="quantity" id="{{_id}}" value="{{this.quantity}}">
+								</td>
+								<td>
+									<button class="btn btn-md btn-danger delete">Delete</button>
+								</td>
+								<td>
+									<span class="subtotal">{{subtotal}}</span> EGP
+								</td>
+							</tr>
+						{{/each}}
+
+						<tr>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td><button class="btn btn-md btn-success order-now">Order Now</button></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div><!-- /row -->
+
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="form-group">
+					<div class="col-sm-12"> <span class="text-danger">{{errors}}</span> </div>
+				</div>
+				<div class="form-group">
+					<div class="col-sm-12"> <h1 class="text-success">{{success}}</h1> </div>
+				</div>
+			</div>
+		</div><!-- /row -->
+
+		<div class="row" id="{{show}}">
+			<form class="order-now-form">
+				<div class="col-sm-12">
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="col-sm-2"><label for="name">Name :</label></div>
+	                            <div class="col-sm-6">
+	                                <input type="text" name="fullName" id="name" class="form-control" placeholder="Name">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="col-sm-2"><label for="address">Address :</label></div>
+	                            <div class="col-sm-6">
+	                                <input type="text" name="address" id="address" class="form-control" placeholder="Address">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="col-sm-2"><label for="phone">Phone :</label></div>
+	                            <div class="col-sm-6">
+	                                <input type="number" name="phone" id="phone" class="form-control" placeholder="Phone">
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="form-group">
+	                        <div class="col-sm-12">
+	                            <div class="col-sm-2"></div>
+	                            <div class="col-sm-6">
+	                                <input type="submit" name="order" value="Order" class="btn btn-md btn-primary">
+	                            </div>
+	                        </div>
+	                    </div>
+				</div>
+			</form>
+		</div>
+	</div><!-- /container -->
+	{{else}}
+		<div class="container no-items">
+			<h3 class="text-center text-danger">There are no items in the cart .</h3>
+		</div>
+	{{/if}}
+</template>
