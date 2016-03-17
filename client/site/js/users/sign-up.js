@@ -24,10 +24,9 @@ Template.signUp.events({
 	        	if(error){
 	        		Session.set('errors', error.reason);
 	        	}else{
-                    Router.go('signIn');
-                }
+              Router.go('signIn');
+            }
         	});
         }
-
     }
 });

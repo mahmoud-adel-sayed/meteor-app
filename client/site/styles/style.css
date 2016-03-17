@@ -82,6 +82,9 @@ ul.site-menu .dropdown-menu{
 .login{
 	display: inline-block;
 }
+form#sign-in , form#sign-up{
+    margin-bottom: 20px;
+}
 
 /* loading template */
 .loading-holder , .loading{
