@@ -1,7 +1,7 @@
 # Meteor App
 This is a meteor app sample for a simple site with it's admin panel .
 
-### Installion
+### Installation
 1. You have to install [Meteor](https://www.meteor.com) first.
 
 ### Run the application
