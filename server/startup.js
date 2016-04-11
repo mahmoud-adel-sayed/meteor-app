@@ -27,6 +27,4 @@ Meteor.startup(function(){
     });
   }
 
-  process.env.MAIL_URL = 'smtp://mahmoudtaha939%40gmail.com:thehulk12345@smtp.gmail.com:465';
-
 });

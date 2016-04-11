@@ -1,4 +1,3 @@
-
 Meteor.publish(null, function (){
   return Meteor.roles.find();
 });
@@ -20,10 +19,6 @@ Meteor.publish('categories',function(){
 
 Meteor.publish('products',function(){
     return Products.find();
-});
-
-Meteor.publish('search-products',function(name){
-    return Products.find({ $text: { $search: name } });
 });
 
 Meteor.publish('sections' , function(){
